@@ -9,8 +9,8 @@ function keyPressStart() {
     console.log(letters);
 }  }
 
-// tallys wins - if guesses array === random word array (wins ++) - needs to be iterated with actual result - not working!
-var wins = 5; var guessWord; var randomWord;
+// tallys wins - needs to be iterated with actual result 
+var wins = 0;  var randomWord;
 if (guessWord===randomWord) {
     wins ++;
     console.log(wins);
@@ -18,4 +18,10 @@ if (guessWord===randomWord) {
     
 document.getElementById('winTally').textContent=wins;
     
+//random number generator to pick woord from array[i]
+var fish = ['bass', 'carp', 'catfish', 'bluegill', 'crappie', 'salmon', 'perch']
+var i = Math.floor(Math.random()*7)
+var guessWord=fish[i];
+console.log(i)
+console.log(guessWord)
     
