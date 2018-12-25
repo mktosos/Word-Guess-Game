@@ -9,9 +9,13 @@ function keyPressStart() {
     console.log(letters);
 }  }
 
-// tallys wins - if guesses array === random word array (wins ++) - needs to be iterated with actual result
-var wins = 0; var guessWord; var randomWord;
+// tallys wins - if guesses array === random word array (wins ++) - needs to be iterated with actual result - not working!
+var wins = 5; var guessWord; var randomWord;
 if (guessWord===randomWord) {
     wins ++;
     console.log(wins);
-    }
+   }
+    
+document.getElementById('winTally').textContent=wins;
+    
+    
