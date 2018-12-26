@@ -8,15 +8,20 @@
     
 </head>
 <body>
-
-    <input type="text" id="key" onkeypress="return keyPressStart(event)" />
+    <!--input type="text" id="key" onkeypress="return pressAnyKey(event)"/-->
+    <input type="text" id="key" onkeypress="return keyPressStart(event)"/>
 
     <div >
-        <p >Wins: <span id="winTally"></span></p>
+        <h3>Press any key to start.<span id="winTally"></span></h3>
     </div>
-
+    <div >
+        <p>Wins: <span id="winTally"></span></p>
+    </div>
+    <div >
+        <p>Guesses Remaining: <span id="guessesRemaining"></span></p>
+    </div>
     <div>
-        <h2 id= blankSpaces></h2>
+        <span id= blankSpaces></span>
     </div>
     <script type="text/javascript" src="assets/javascript/game.js"></script>   
 </body>
