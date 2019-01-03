@@ -5,23 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     
 </head>
 <body>
     <!--input type="text" id="key" onkeypress="return pressAnyKey(event)"/-->
-    <input type="text" id="key" onkeypress="return keyPressStart(event)"/>
+    <!--input type="text" id="key" onkeypress="return keyPressStart(event)"/-->
 
     <div >
-        <h3>Press any key to start.<span id="winTally"></span></h3>
+        <h3 id="prompt3">Press any key to start.<span id="winTally"></span></h3>
     </div>
     <div >
-        <p>Wins: <span id="winTally"></span></p>
+        <p id="prompt1">Wins: <span id="winTally"></span></p>
     </div>
     <div >
-        <p>Guesses Remaining: <span id="guessesRemaining"></span></p>
+        <p id="prompt2">Guesses Remaining: <span id="guessesRemaining"></span></p>
     </div>
     <div>
-        <span id= blankSpaces></span>
+        <p id= blankSpaces></p>
     </div>
     <script type="text/javascript" src="assets/javascript/game.js"></script>   
 </body>
