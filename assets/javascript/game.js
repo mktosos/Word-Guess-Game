@@ -3,11 +3,16 @@
     document.getElementById("prompt1").style.visibility = "visible";
     document.getElementById("prompt2").style.visibility = "visible";
     document.getElementById("prompt3").style.visibility = "hidden";
+
+    //letters guessed arrays
+    var correctGuesses = [];
+    var wrongGuesses = [];
+      //  document.getElementById("guessesRemaining").innerHTML=guessesLeft;
+
     //random number generator to pick fish from array - fish[i]
      var fish = ['bass', 'carp', 'catfish', 'bluegill', 'tuna', 'salmon', 'perch']
       var i = Math.floor(Math.random()*7)
       var guessWord=fish[i];
-          //console.log(i);
           console.log(guessWord);
 
     //create blank spaces for guessWord,  to add correct guesses use DOM to appropriate blnkSpcs[]
@@ -16,57 +21,73 @@
       for (let index = 0; index <x; index++) {
           //append x number of ___ ___ ___ ___
       var blnkSpcs=document.getElementById("blankSpaces");
-      var underscore = document.createTextNode("___ ");
+      var underscore = document.createTextNode("_ ");
       blnkSpcs.appendChild(underscore);
       }
       //var spaces= document.getElementById("blankSpaces")
       var spaces =document.getElementById("blankSpaces").innerHTML
       console.log(spaces)  
-      console.log(spaces[2])      
-      console.log(spaces[0]) 
-      console.log(spaces[122]) 
-    //sets letterGuess to keystroke inputted - is the keyboard letter clicked
-     //function keyPressStart() {
+      console.log(spaces[0]);console.log(spaces[3]);console.log(spaces[4]) 
+      
+     //sets letterGuess to keystroke inputted - is the keyboard letter clicked
      document.onkeypress = function(keyPressed) {
      var keyPressed = keyPressed || window.event,
      charCode = keyPressed.keyCode || keyPressed.which;
      lettersGuessed = String.fromCharCode(charCode);
-    
      var letterGuess = String.fromCharCode(keyPressed.keyCode);
      console.log(letterGuess);
-     }
-
-
-
-//      //for loop to compare letterGuess to letterActual
-//       for (wrongGuesses = 0; wrongGuesses < 9; ) {
-         
-         
      
-//          for(numOfLetters=0; numOfLetters<fishArr.length; numOfLetters++){
-//              console.log(numOfLetters);
-//              console.log(fishArr[numOfLetters]);
-//              var letterActual=(fishArr[numOfLetters]);
-//             }
-//     }  }
-//     if (letterActual === letterGuess) {
-//          alert ("match!"); //replace underscore with letterGuess
-//      }else{ //update guessesLeft
-//      }
-//     // tallys wins - needs to be iterated with actual result 
-//      var wins = 0;  var randomWord;
-//      if (guessWord===randomWord) {
-//          wins ++;
-//          console.log(wins);
-//      }
-//      document.getElementById('winTally').textContent=wins;
-    
-//      
+     
+//************************* END of startup/setup ************************************/
 
-//      //game logic? split words into letters array
-//      var fishLetters=[fish[i]+ ''];
-//      var fishArr=fishLetters[0].split('')
-//          console.log(fishArr[1]);
-//          console.log(fishArr);
-//          console.log(blnkSpcs[0]);
- }
+      //game logic? split words into letters array
+      var fishLetters=[fish[i]];
+      var fishArr=fishLetters[0].split('')
+
+      // compare letterGuess to letterActual
+        console.log(fishLetters);
+        console.log(fishArr);
+        console.log(fishArr.indexOf(letterGuess));
+        if (fishArr.indexOf(letterGuess)> -1){
+                alert ("match!"); //replace underscore with letterGuess
+                correctGuesses.push(letterGuess);
+                var spcStrng =blankSpaces.innerHTML;
+                console.log(spcStrng);
+                console.log(correctGuesses);
+               
+                console.log(wrongGuesses);
+                
+                console.log(guessesLeft);
+                //console.log(spcStrng[numOfLetters*2])
+                //var spaceSwap = spcStrng[numOfLetters*2]
+                spaces[0]="k";
+                }
+                else {
+                    wrongGuesses.push(letterGuess);
+                    var guessesLeft=9-wrongGuesses.length;
+                    document.getElementById("guessesRemaining").innerHTML=guessesLeft
+                }
+                
+              
+             ///not the right spot in loop
+             //numOfLetters=fishArr.length-1){
+                 //guessesLeft = guessesLeft - 1
+                //          
+                
+                
+            //document.getElementById(spaces[numOfLetters]).textContent=fishArr[numOfLetters];
+    
+      //     // tallys wins - needs to be iterated with actual result 
+      //      var wins = 0;  var randomWord;
+      //      if (guessWord===randomWord) {
+      //          wins ++;
+      //          console.log(wins);
+      //      }
+      //      document.getElementById('winTally').textContent=wins;
+          
+      // ****** var stored guesses    var guesses = []
+              
+      
+       }}
+            
+        
