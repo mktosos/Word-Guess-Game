@@ -5,7 +5,7 @@
     document.getElementById("prompt3").style.visibility = "hidden";
 
     //letters guessed arrays
-    var correctGuesses = [];
+    var correctGuesses = ['','','','','','','','',''];
     var wrongGuesses = [];
       //  document.getElementById("guessesRemaining").innerHTML=guessesLeft;
 
@@ -43,6 +43,7 @@
       //game logic? split words into letters array
       var fishLetters=[fish[i]];
       var fishArr=fishLetters[0].split('')
+      var letterIndex = fishArr.indexOf(letterGuess)
 
       // compare letterGuess to letterActual
         console.log(fishLetters);
@@ -50,22 +51,29 @@
         console.log(fishArr.indexOf(letterGuess));
         if (fishArr.indexOf(letterGuess)> -1){
                 alert ("match!"); //replace underscore with letterGuess
-                correctGuesses.push(letterGuess);
+                if (correctGuesses.indexOf(letterGuess) > -1) {
+                    alert("You've already guessed that letter");
+                    return;
+                }
+                else {
+                    correctGuesses.splice(fishArr.indexOf(letterGuess), 1, letterGuess);
+                }
                 var spcStrng =blankSpaces.innerHTML;
                 console.log(spcStrng);
                 console.log(correctGuesses);
-               
-                console.log(wrongGuesses);
-                
                 console.log(guessesLeft);
-                //console.log(spcStrng[numOfLetters*2])
-                //var spaceSwap = spcStrng[numOfLetters*2]
-                spaces[0]="k";
                 }
                 else {
-                    wrongGuesses.push(letterGuess);
-                    var guessesLeft=9-wrongGuesses.length;
-                    document.getElementById("guessesRemaining").innerHTML=guessesLeft
+                    if (wrongGuesses.indexOf(letterGuess) > -1) {
+                        alert("You've already guessed that letter");
+                        return;
+                    }    
+                    else{    
+                        wrongGuesses.push(letterGuess);
+                        var guessesLeft=9-wrongGuesses.length;
+                        document.getElementById("guessesRemaining").innerHTML=guessesLeft
+                        console.log(wrongGuesses);
+                    }
                 }
                 
               
