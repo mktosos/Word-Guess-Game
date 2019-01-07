@@ -1,19 +1,17 @@
- document.onkeypress=function(){
-        //starts game 
-    document.getElementById("prompt1").style.visibility = "visible";
-    document.getElementById("prompt2").style.visibility = "visible";
-    document.getElementById("prompt3").style.visibility = "hidden";
-    document.getElementById("prompt4").style.visibility = "visible";
-    document.getElementById("winBox").style.visibility = "visible";
-    document.getElementById("blankSpaces").style.visibility = "visible";
-    document.getElementById("wrongGuessBox").style.visibility = "visible";
+// press any key starts game reveals game elements
+document.body.addEventListener('keypress', startGame);
+
+function runGameCycle(){
+        }
+var wins = 0;  
+         
     //letters guessed arrays
-    var wrongGuesses = [];
+     wrongGuesses = [];
     
      //random number generator to pick fish from array - fish[i]
-    var fish = ['cod', 'carp', 'catfish', 'sardine','anchovy', 'tuna', 'salmon', 'perch','shark', 'ray']
-    var i = Math.floor(Math.random()*7)
-    var guessWord=fish[i];
+     fish = ['cod', 'carp', 'catfish', 'sardine','anchovy', 'tuna', 'salmon', 'perch','shark', 'ray']
+     i = Math.floor(Math.random()*fish.length)
+     guessWord=fish[i];
 
     console.log(guessWord);
 
@@ -23,7 +21,7 @@
       underscore.push('-');
       }
       document.getElementById("blankSpaces").innerHTML=underscore.join('')
-      
+    
      //sets letterGuess to keystroke inputted - is the keyboard letter clicked
      document.onkeypress = function(keyPressed) {
         //if (!(event.which <= 90 && event.which >= 65)) return
@@ -37,15 +35,12 @@
 //************************* END of startup/setup ************************************/
 
       //game logic? split words into letters array
-      var fishLetters=[fish[i]];
-      var fishArr=fishLetters[0].split('')
-      var letterIndex = fishArr.indexOf(letterGuess)
-      var wins = 0;  
+       fishLetters=[fish[i]];
+       fishArr=fishLetters[0].split('')
+       letterIndex = fishArr.indexOf(letterGuess)
+      
 
       // compare letterGuess to letterActual
-        //console.log(fishLetters);
-        //console.log(fishArr);
-        //console.log(fishArr.indexOf(letterGuess));
         if (fishArr.indexOf(letterGuess)> -1){
                 //if guess is correct
                     if (underscore.indexOf(letterGuess) > -1) {
@@ -56,13 +51,12 @@
                     underscore.splice(fishArr.indexOf(letterGuess), 1, letterGuess);
                     document.getElementById("blankSpaces").innerHTML=underscore.join('');
                     //console.log(underscore.join(''));
-                    //console.log(guessWord);
+                    
                     if (underscore.join('')==guessWord){
                         wins = wins+1;
                         document.getElementById("winNum").innerHTML=wins;
                         document.getElementById("youWin").innerHTML="YOU WIN!";
-                        
-                        return;
+                        document.body.addEventListener('keypress', startGame);
                         }
                 }
                 }
@@ -74,12 +68,33 @@
                     }    
                     else{    
                         wrongGuesses.push(letterGuess);
-                        var guessesLeft=9-wrongGuesses.length;
-                        document.getElementById("guessesRemaining").innerHTML=guessesLeft
-                        //console.log(wrongGuesses);
+                        guessesLeft=9-wrongGuesses.length;
+                        //if (guessesLeft<0){
+                          //  document.getElementById("youWin").innerHTML="GAME OVER";
+                           // return;
+                   // }
+                        document.getElementById("guessesRemaining").innerHTML=guessesLeft+1
+                            //console.log(wrongGuesses);
                         document.getElementById('wrongGuesses').textContent=wrongGuesses
-                    }
+                        if (guessesLeft<0){
+                            document.getElementById("youWin").innerHTML="GAME OVER";
+                            document.getElementById("prompt2").style.visibility = "hidden";
+                            document.getElementById("prompt4").style.visibility = "hidden";
+                            document.getElementById("blankSpaces").innerHTML=fishArr.join('');
+                            return;
+                            } 
+                    }      
                 }
-       }}
+       }
             
-        
+       function startGame() {
+        document.getElementById("prompt1").style.visibility = "visible";
+        document.getElementById("prompt2").style.visibility = "visible";
+        document.getElementById("prompt3").style.visibility = "hidden";
+        document.getElementById("prompt4").style.visibility = "visible";
+        document.getElementById("winBox").style.visibility = "visible";
+        document.getElementById("blankSpaces").style.visibility = "visible";
+        document.getElementById("wrongGuessBox").style.visibility = "visible";
+        document.body.removeEventListener('keypress',startGame);
+        console.log(wrongGuesses);
+    }      
