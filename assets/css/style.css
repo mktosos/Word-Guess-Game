@@ -28,10 +28,11 @@ body{
 }
 #winBox{
     visibility: hidden;
-    border: 2px solid black;
+    border: 4px solid black;
     background-color: antiquewhite;
-    width: 14%;
+    width: 25%;
     margin: auto;
+    margin-top: 10px;
     padding-left: 25px;
     padding-right: 25px;
     text-align: center;
@@ -41,8 +42,9 @@ body{
     top: -170px;
 }
 #blankSpaces{
-    visibility: hidden;
-    border: 2px solid black;
+    position: relative;
+    top: -100px;visibility: hidden;
+    border: 4px solid black;
     background-color: antiquewhite;
     width: 66%;
     margin: auto;
@@ -53,10 +55,13 @@ body{
     position: relative;
 }
 #wrongGuessBox{
+    clear: both;
+    position: relative;
+    top: -50px;visibility: hidden;
     visibility: hidden;
-    border: 2px solid black;
+    border: 4px solid black;
     background-color: antiquewhite;
-    width: 14%;
+    width: 25%;
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
