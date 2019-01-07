@@ -4,15 +4,18 @@
     document.getElementById("prompt2").style.visibility = "visible";
     document.getElementById("prompt3").style.visibility = "hidden";
     document.getElementById("prompt4").style.visibility = "visible";
+    document.getElementById("winBox").style.visibility = "visible";
+    document.getElementById("blankSpaces").style.visibility = "visible";
+    document.getElementById("wrongGuessBox").style.visibility = "visible";
     //letters guessed arrays
     var wrongGuesses = [];
     
-    [lbl] start:
-    //random number generator to pick fish from array - fish[i]
-     var fish = ['bass', 'carp', 'catfish', 'bluegill', 'tuna', 'salmon', 'perch']
-      var i = Math.floor(Math.random()*7)
-      var guessWord=fish[i];
-          console.log(guessWord);
+     //random number generator to pick fish from array - fish[i]
+    var fish = ['cod', 'carp', 'catfish', 'sardine','anchovy', 'tuna', 'salmon', 'perch','shark', 'ray']
+    var i = Math.floor(Math.random()*7)
+    var guessWord=fish[i];
+
+    console.log(guessWord);
 
     //create blank spaces for guessWord
     var underscore = [];
@@ -23,6 +26,7 @@
       
      //sets letterGuess to keystroke inputted - is the keyboard letter clicked
      document.onkeypress = function(keyPressed) {
+        //if (!(event.which <= 90 && event.which >= 65)) return
      var keyPressed = keyPressed || window.event,
      charCode = keyPressed.keyCode || keyPressed.which;
      lettersGuessed = String.fromCharCode(charCode);
@@ -57,7 +61,7 @@
                         wins = wins+1;
                         document.getElementById("winNum").innerHTML=wins;
                         document.getElementById("youWin").innerHTML="YOU WIN!";
-                        goto start;
+                        
                         return;
                         }
                 }
